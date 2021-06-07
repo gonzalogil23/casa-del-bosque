@@ -1,0 +1,57 @@
+footer {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(255, 235, 211);
+  .logoFooter {
+    font-family: 'Pacifico';
+    font-size: 22px;
+    text-shadow: rgba(153, 153, 153, 0.637) 0 1px;
+    transition: all 0.2s ease-out;
+    margin-top: 20px;
+    &:link {
+      text-decoration: none;
+      color: black;
+    }
+    &:visited {
+      text-decoration: none;
+      color: black;
+    }
+    &:hover {
+      transform: scale(1.02);
+      color: rgb(22, 22, 22);
+    }
+  }
+
+  ul {
+    list-style: none;
+    text-decoration: none;
+    color: black !important;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-top: 10px;
+    a {
+      &:link {
+        text-decoration: none;
+        color: black;
+      }
+      &:visited {
+        text-decoration: none;
+        color: black;
+      }
+      &:hover {
+        color: rgb(31, 31, 31);
+        font-weight: 600;
+      }
+    }
+  }
+  .redes {
+    max-height: 3rem;
+    width: auto;
+    transition: all 0.6s ease;
+    margin: 10px 5px auto 5px;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}

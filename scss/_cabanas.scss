@@ -1,0 +1,21 @@
+.cabSimple,
+.cabDoble,
+.cabSuite {
+  display: none;
+  h3 {
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+  input {
+    &:focus {
+      background-color: rgb(22, 22, 22);
+      color: white;
+    }
+  }
+  button {
+    font-size: small;
+    transition: all 0.2s ease-out;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}

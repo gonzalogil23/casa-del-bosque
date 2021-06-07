@@ -1,0 +1,14 @@
+.form {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    .formulario { 
+        border: solid 2px rgba(22, 22, 22, 0.685);
+        border-radius: 15px;
+        padding: 15px 0;
+        margin: 40px auto;
+        width: 95%;
+        label {
+            font-weight: 600;
+        }
+    }
+}

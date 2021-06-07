@@ -1,0 +1,17 @@
+.navbar {
+  .navbar-brand {
+    font-family: "Pacifico";
+    font-size: 22px;
+    text-shadow: rgba(153, 153, 153, 0.637) 0 1px;
+    transition: all 0.2s ease-out;
+    &:hover {
+      color: rgb(22, 22, 22);
+      transform: scale(1.05);
+    }
+  }
+  .nav-link {
+    &:hover {
+      font-weight: 500;
+    }
+  }
+}

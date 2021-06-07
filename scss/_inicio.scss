@@ -1,0 +1,23 @@
+.inicio { 
+    background-image: url(../img/bosqueBackground.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    .textoInicio {
+        color: white;
+        text-align: left;
+        padding: 30px;
+        margin-left: 30px;
+        .display-5{
+            font-size: 3.5rem;
+        }
+        .lead {
+            font-size: 1.5rem;
+        }
+        .btn {
+            &:hover{
+                background-color: rgb(22, 22, 22);
+                color: whitesmoke;
+            }
+        }
+    }
+}

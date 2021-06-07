@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa del Bosque</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#Inicio">Casa del Bosque</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                    aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#Inicio">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#Nosotros">Cabañas</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#Servicios" id="navbarScrollingDropdown"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Nuestros servicios
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                <li><a class="dropdown-item" href="#">Actividades Recreativas</a></li>
+                                <li><a class="dropdown-item" href="#">Gastronomía</a></li>
+                                <li><a class="dropdown-item" href="#">Relax</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#Contacto">Contacto</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="Inicio" class="inicio">
+            <div class="col-xxl-8 px-4 py-5">
+                <div class="row align-items-center g-5 py-5">
+                    <!-- <div class="col-10 col-sm-8 col-lg-6 imagenPortada">
+                        <img src="img/cabaña.jpg" alt="Balcón de la cabaña" class="fotoPortada">
+                    </div> -->
+                    <div class="col-lg-6 textoInicio">
+                        <h1 class="display-5 fw-bold lh-1 mb-3">Desconectate de la ciudad y la rutina.</h1>
+                        <p class="lead">Vení a pasar unos días a nuestras cabañas en Casa del Bosque y renova las
+                            energías.</p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                            <a href="#formularioReserva"><button type="button"
+                                    class="btn btn-light btn-lg px-4 me-md-2">¡Reservar!</button></a>
+                            <!-- <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <section class="form container">
+            <form class="row d-flex justify-content-center align-content-center formulario" id="formularioReserva">
+                <div class=" col-xl-4 col-sm-6">
+                    <label for="check-in">Check-in</label>
+                    <input class="form-control form-control-sm" type="date" name="check-in" id="checkIn">
+                </div>
+                <div class=" col-xl-4 col-sm-6">
+                    <label for="check-out">Check-out</label>
+                    <input class="form-control form-control-sm" type="date" name="check-out" id="checkOut">
+                </div>
+                <div class="form-row form-group flex-column align-items-center align-self-center col-xl-2 col-sm-6">
+                    <label for="guests">Cant. de pasajeros</label>
+                    <select name="guests" id="pasajeros" class="form-control-sm" required="">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+                </div>
+                <div class="align-self-center col-xl-1 col-sm-6">
+                    <a href="#cabanas"><button id="book" type="submit"
+                            class="btn btn-success btn-sm">Buscar!</button></a>
+                </div>
+            </form>
+        </section>
+        <hr class="container">
+        <section id="Nosotros" class="container nosotros">
+            <div class="row">
+                <div class="col-lg-4" id="simplePortada">
+                    <img src="img/simple.jpg" alt="frente cabaña simple" class="img-fluid imgCabaña">
+                    <h2>Cabaña simple.</h2>
+                    <p>Una habitación y galería con vista al Bosque.</p>
+                    <button class="btn btn-secondary" href="#simple" id="btnSimple"> Ver más</button>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4" id="doblePortada">
+                    <img src="img/doble.jpg" alt="frente cabaña doble" class="img-fluid imgCabaña">
+                    <h2>Cabaña doble.</h2>
+                    <p>Dos habitaciones con balcón amplio.</p>
+                    <button class="btn btn-secondary" href="#doble" id="btnDoble"> Ver más</button>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4" id="suitePortada">
+                    <img src="img/suite4.jpg" alt="frente cabaña suite" class="img-fluid imgCabaña">
+                    <h2>Cabaña suite.</h2>
+                    <p>Tres habitaciones y patio con yacuzzi.</p>
+                    <button class="btn btn-secondary " href="#suite" id="btnSuite"> Ver más</button>
+                </div><!-- /.col-lg-4 -->
+            </div>
+            <hr>
+            <section id="cabanas" class="container">
+                <div class="row featurette cabSimple" id="simple">
+                    <div class="col-md-7 order-md-2">
+                        <h2 class="featurette-heading">Cabaña Simple. </h2>
+                        <h3 class="text-muted">Ideal para
+                            parejas.</h3>
+                        <p class="lead">Cuenta con una habitación con una cama king, dos baños y una galería con salida
+                            al bosque.</p>
+                        <p>Valor por día: <strong>$800 + iva.</strong></p>
+                        <form>
+                            <input type="text" name="dias" placeholder="Cant. de días..." id="dias">
+                            <button type="submit" class="btn btn-outline-success" for='dias'>Agregar.</button>
+                        </form>
+                    </div>
+                    <div class="col-md-5 order-md-1">
+                        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                            width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img"
+                            aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <title>Placeholder</title>
+                            <rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa"
+                                dy=".3em">500x500</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="row featurette cabDoble" id="doble">
+                    <div class="col-md-7 order-md-2">
+                        <h2 class="featurette-heading">Cabaña doble.</h2>
+                        <h3 class="text-muted">Ideal para grupo de amigxs
+                            o familias pequeñas. </h3>
+                        <p class="lead">Dividida en dos plantas. Cuenta con dos habitaciones, tres baños (dos en suite)
+                            y una galeria amplia.</p>
+                        <p>Valor por día: <strong>$1300 + iva.</strong></p>
+                        <form>
+                            <input type="text" name="dias" placeholder="Cant. de días..." id="dias">
+                            <button type="submit" class="btn btn-outline-success" for='dias'>Agregar.</button>
+                        </form>
+                    </div>
+                    <div class="col-md-5 order-md-1">
+                        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                            width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img"
+                            aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <title>Placeholder</title>
+                            <rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa"
+                                dy=".3em">500x500</text>
+                        </svg>
+
+                    </div>
+                </div>
+                <div class="row featurette cabSuite" id="suite">
+                    <div class="col-md-7 order-md-2">
+                        <h2 class="featurette-heading">Cabaña Suite. </h2>
+                        <h3 class="text-muted">Ideal para familias numerosas.</h3>
+                        <p class="lead">Cuenta con tres habitaciones divididas en dos plantas, cada una con baño
+                            suite. Tiene un balcón con yacuzzi, con salida al patio y vista al bosque</p>
+                        <p>Valor por día: <strong>$2000 + iva.</strong></p>
+                        <form>
+                            <input type="text" name="dias" placeholder="Cant. de días..." id="dias">
+                            <button type="submit" class="btn btn-outline-success" for='dias'>Agregar.</button>
+                        </form>
+                    </div>
+                    <div class="col-md-5 order-md-1">
+                        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                            width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img"
+                            aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <title>Placeholder</title>
+                            <rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa"
+                                dy=".3em">500x500</text>
+                        </svg>
+
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section id="Servicios" class="container servicios">
+            <h2>Servicios adicionales que ofrecemos.</h2>
+            <h4>Clickea sobre el Servicio que quieras agregar a tu estadía.</h4>
+            <div class="container-fluid p-0">
+                <div class="hola">
+                    <div href="" class="col-md-4 col-sm-6 container-hf card text-white">
+                        <img class="img-fluid imgServicios imgCabalgata" src="img/cabalgata3.jpg"
+                            alt="Cabalgata en familia" id="imgCabalgata">
+                        <div class="textoimg card-img-overlay">
+                            <h3 class="card-title">Cabalgata.</h3>
+                            <h5 class="card-text">Tour a caballo guiado por el bosque.</h5>
+                            <h6 class="card-text">Precio por persona: <strong>$600</strong></h6>
+                        </div>
+                    </div>
+                    <div href="" class="col-md-4 col-sm-6 container-hf card text-white">
+                        <img class="img-fluid imgServicios imgTirolesa" src="img/tirolesa.jpg"
+                            alt="Tirolesa en el Bosque" id="imgTirolesa">
+                        <div class="textoimg card-img-overlay">
+                            <h3 class="card-title">Tirolesa.</h3>
+                            <h5 class="card-text">Deslizamiento por cable entre las copas de los arboles.</h5>
+                            <h6 class="card-text">Precio por persona: <strong>$800</strong></h6>
+                        </div>
+                    </div>
+                    <div href="" class="col-md-4 col-sm-6 container-hf card text-white">
+                        <img class="img-fluid imgServicios imgTrekking" src="img/trekking.jpg" alt="Trekking guiado"
+                            id="imgTrekking">
+                        <div class="textoimg card-img-overlay">
+                            <h3 class="card-title">Trekking.</h3>
+                            <h5 class="card-text">Caminata guiada por el bosque.</h5>
+                            <h6 class="card-text">Precio por persona: <strong>$800</strong></h6>
+                        </div>
+                    </div>
+                    <div href="" class="col-md-4 col-sm-6 container-hf card text-white">
+                        <img class="img-fluid imgServicios imgCocina" src="img/gastronomia3.jpg" alt="platos gourmet"
+                            id="imgCocina">
+                        <div class="textoimg card-img-overlay">
+                            <h3 class="card-title">Cena gourmet.</h3>
+                            <h5 class="card-text">Desgustación por pasos maridados con vino.</h5>
+                            <h6 class="card-text">Precio por persona: <strong>$1200</strong></h6>
+                        </div>
+                    </div>
+                    <div href="" class="col-md-4 col-sm-6 container-hf card text-white">
+                        <img class="img-fluid imgServicios imgDesayuno" src="img/desayuno.jpg" alt="desayuno Buffet"
+                            id="imgDesayuno">
+                        <div class="textoimg card-img-overlay">
+                            <h3 class="card-title">Desayuno Buffet.</h3>
+                            <h5 class="card-text">Manjares artesanales acompañados de jugos naturales.</h5>
+                            <h6 class="card-text">Precio por persona: <strong>$700</strong></h6>
+                        </div>
+                    </div>
+                    <div href="" class="col-md-4 col-sm-6 container-hf card   text-white">
+                        <img class="img-fluid imgServicios imgSpa" src="img/spa.jpg" alt="spa y masajes" id="imgSpa">
+                        <div class="textoimg card-img-overlay">
+                            <h3 class="card-title">Tarde de Spa.</h3>
+                            <h5 class="card-text">Sesión de Spa y masajes.</h5>
+                            <h6 class="card-text">Precio por persona: <strong>$1000</strong></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <section id="Contacto" class="container contacto">
+            <div>
+                <h2>¡Completa tus datos y nosotros te contactamos!</h2>
+                <img src="img/cabaña.jpg" alt="balcón cabana">
+            </div>
+            <form action="" method="post" class="formularioContacto">
+                <label for="fullName" class="form-label">Nombre completo</label>
+                <input type="text" id="fullName" class="form-control">
+
+                <label for="fullName" class="form-label">Teléfono</label>
+                <input type="text" id="fullName" class="form-control">
+
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="" id="email" class="form-control" placeholder="ejemplo@gmail.com">
+
+                <label for="coment" class="form-label">Comentarios</label>
+                <textarea name="" id="coment" cols="30" rows="10" class="form-control"></textarea>
+                <fieldset>
+                    <legend class="form-label">¿Como nos conociste?</legend>
+                    <label for="instagram" class="form-check-label">Instagram</label>
+                    <input type="checkbox" id="instagram" class="form-check-input">
+
+                    <label for="facebook" class="form-check-label">Facebook</label>
+                    <input type="checkbox" name="" id="facebook" class="form-check-input">
+
+                    <label for="internet" class="form-check-label">Internet</label>
+                    <input type="checkbox" name="" id="internet" class="form-check-input">
+                </fieldset>
+
+                <button type="submit">Enviar</button>
+        </section>
+    </main>
+    <footer>
+        <div><a href="#Inicio" class="logoFooter">Casa del Bosque</a></div>
+        <div>
+            <ul>
+                <li><a href="#Inicio">Inicio</a></li>
+                <li><a href="#Nosotros">Cabañas</a></li>
+                <li><a href="#Servicios">Servicios</a></li>
+                <li><a href="#Contacto">Contacto</a></li>
+            </ul>
+        </div>
+        <div><a href="https://www.instagram.com/"><img src="img/socialMedia/instagram1.png" alt="logo instagram"
+                    class="redes"></a>
+            <a href="https://www.facebook.com/"><img src="img/socialMedia/facebook1.png" alt="logo facebook"
+                    class="redes"></a>
+            <a href="https://web.whatsapp.com/"><img src="img/socialMedia/whatsapp.png" alt="logo whats app"
+                    class="redes"></a>
+        </div>
+    </footer>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ"
+        crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+
+
+</body>
+
+</html>
