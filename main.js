@@ -168,4 +168,9 @@ formContacto.onsubmit = (e) => {
   localStorage.setItem('Nombre', nombreContacto);
   localStorage.setItem('Telefono', telefonoContacto);
   localStorage.setItem('Email', emailContacto);
+  alert(
+    'Hola,' +
+      nombreContacto.value +
+      '. Gracias por contactarte con nosotros. En breve nos comunicaremos para continuar con el proceso de Reserva.'
+  );
 };
