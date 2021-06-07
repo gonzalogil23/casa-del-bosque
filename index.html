@@ -68,16 +68,15 @@
                         <p class="lead">Vení a pasar unos días a nuestras cabañas en Casa del Bosque y renova las
                             energías.</p>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                            <a href="#formularioReserva"><button type="button"
+                            <a href="#reserva"><button type="button"
                                     class="btn btn-light btn-lg px-4 me-md-2">¡Reservar!</button></a>
                             <!-- <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button> -->
                         </div>
                     </div>
                 </div>
             </div>
-
         </section>
-        <section class="form container">
+        <section class="form container" id="reserva">
             <form class="row d-flex justify-content-center align-content-center formulario" id="formularioReserva">
                 <div class=" col-xl-4 col-sm-6">
                     <label for="check-in">Check-in</label>
@@ -205,7 +204,7 @@
 
         <section id="Servicios" class="container servicios">
             <h2>Servicios adicionales que ofrecemos.</h2>
-            <h4>Clickea sobre el Servicio que quieras agregar a tu estadía.</h4>
+            <!-- <h4>Clickea sobre el Servicio que quieras agregar a tu estadía.</h4> -->
             <div class="container-fluid p-0">
                 <div class="hola">
                     <div href="" class="col-md-4 col-sm-6 container-hf card text-white">
@@ -270,12 +269,12 @@
                 <h2>¡Completa tus datos y nosotros te contactamos!</h2>
                 <img src="img/cabaña.jpg" alt="balcón cabana">
             </div>
-            <form action="" method="post" class="formularioContacto">
-                <label for="fullName" class="form-label">Nombre completo</label>
+            <form action="" method="post" class="formularioContacto" id="formContacto">
+                <label for="fullName" class="form-label" id="name">Nombre completo</label>
                 <input type="text" id="fullName" class="form-control">
 
-                <label for="fullName" class="form-label">Teléfono</label>
-                <input type="text" id="fullName" class="form-control">
+                <label for="fullName" class="form-label" id="phone">Teléfono</label>
+                <input type="text" id="phone" class="form-control">
 
                 <label for="email" class="form-label">Email</label>
                 <input type="email" name="" id="email" class="form-control" placeholder="ejemplo@gmail.com">
@@ -294,7 +293,8 @@
                     <input type="checkbox" name="" id="internet" class="form-check-input">
                 </fieldset>
 
-                <button type="submit">Enviar</button>
+                <button class="btn btn-outline-primary" type="submit">Enviar</button>
+            </form>
         </section>
     </main>
     <footer>
@@ -326,7 +326,7 @@
         integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ"
         crossorigin="anonymous"></script>
     <script src="main.js"></script>
-
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
 
 </body>
 

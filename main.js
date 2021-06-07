@@ -96,9 +96,15 @@ let cabanasimple = document.getElementById('simplePortada');
 let cabanadoble = document.getElementById('doblePortada');
 let cabanasuite = document.getElementById('suitePortada');
 
+let fechaA = document.getElementById('checkIn');
+let fechaB = document.getElementById('checkOut');
 let formRes = document.getElementById('formularioReserva');
 formRes.onsubmit = (evt) => {
   evt.preventDefault();
+  localStorage.setItem('pasajeros', pas.value);
+  localStorage.setItem('Check In', fechaA.value);
+  localStorage.setItem('Check Out', fechaB.value);
+
   console.log('Cantidad de Pasajeros elegidos: ' + pas.value);
   if (pas.value > 3) {
     cabanasimple.style.visibility = 'hidden';
@@ -145,9 +151,21 @@ const cocina = document.getElementById('imgCocina');
 const desayuno = document.getElementById('imgDesayuno');
 const spa = document.getElementById('imgSpa');
 
-// cabalgata.onmouseover = () => {
-//   cabalgata.style.background = 'rgba(104, 103, 103, 0.336)';
-//   cabalgata.innerHTML = `<h3> ${servicios[0].nombre}</h3>
-//   <p>  Tipo: ${servicios[0].tipo} </p>
-//   <strong> $ ${servicios[0].costo}</strong>`;
-// };
+let checkIn = moment(fechaA.value);
+let checkOut = moment(fechaB.value);
+
+let estadiaTotal = checkOut.diff(checkIn.value, 'days');
+
+console.log(estadiaTotal);
+
+const formContacto = document.getElementById('formContacto');
+const nombreContacto = document.getElementById('fullName');
+const telefonoContacto = document.getElementById('phone');
+const emailContacto = document.getElementById('email');
+
+formContacto.onsubmit = (e) => {
+  e.preventDefault();
+  localStorage.setItem('Nombre', nombreContacto);
+  localStorage.setItem('Telefono', telefonoContacto);
+  localStorage.setItem('Email', emailContacto);
+};
