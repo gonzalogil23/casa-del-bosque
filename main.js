@@ -1,3 +1,5 @@
+moment().format();
+
 //alert("Cabaña SIMPLE x día $800 |" +  " Cabaña DOBLE x día $1300 |" + " Cabaña SUITE x día $2000")
 
 let CabSimple = 800;
@@ -96,8 +98,17 @@ let cabanasimple = document.getElementById('simplePortada');
 let cabanadoble = document.getElementById('doblePortada');
 let cabanasuite = document.getElementById('suitePortada');
 
-let fechaA = document.getElementById('checkIn');
-let fechaB = document.getElementById('checkOut');
+// const fechaA = document.getElementById('checkIn');
+// const fechaB = document.getElementById('checkOut');
+// const fa = fechaA.value;
+// const fb = fechaB.value;
+
+// console.log(fa);
+// console.log(fb);
+// const checkIn = moment(fa);
+// const checkOut = moment(fb);
+// const estadiaTotal = checkOut.diff(checkIn, 'days');
+
 let formRes = document.getElementById('formularioReserva');
 formRes.onsubmit = (evt) => {
   evt.preventDefault();
@@ -106,6 +117,7 @@ formRes.onsubmit = (evt) => {
   localStorage.setItem('Check Out', fechaB.value);
 
   console.log('Cantidad de Pasajeros elegidos: ' + pas.value);
+  //console.log('Cantidad de días: ' + estadiaTotal);
   if (pas.value > 3) {
     cabanasimple.style.visibility = 'hidden';
   } else if (pas.value <= 3) {
@@ -151,23 +163,16 @@ const cocina = document.getElementById('imgCocina');
 const desayuno = document.getElementById('imgDesayuno');
 const spa = document.getElementById('imgSpa');
 
-let checkIn = moment(fechaA.value);
-let checkOut = moment(fechaB.value);
-
-let estadiaTotal = checkOut.diff(checkIn.value, 'days');
-
-console.log(estadiaTotal);
-
 const formContacto = document.getElementById('formContacto');
 const nombreContacto = document.getElementById('fullName');
 const telefonoContacto = document.getElementById('phone');
 const emailContacto = document.getElementById('email');
 
-formContacto.onsubmit = (e) => {
-  e.preventDefault();
-  localStorage.setItem('Nombre', nombreContacto);
-  localStorage.setItem('Telefono', telefonoContacto);
-  localStorage.setItem('Email', emailContacto);
+formContacto.onsubmit = (evt) => {
+  evt.preventDefault();
+  localStorage.setItem('Nombre', nombreContacto.value);
+  localStorage.setItem('Telefono', telefonoContacto.value);
+  localStorage.setItem('Email', emailContacto.value);
   alert(
     'Hola,' +
       nombreContacto.value +

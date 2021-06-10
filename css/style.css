@@ -65,6 +65,14 @@
 .nosotros .imgCabaña {
   width: 356px;
   height: 425px;
+  transition: all 0.05s ease-out;
+  border: solid 1px #161616;
+  border-radius: 5px;
+}
+.nosotros .imgCabaña:hover {
+  transform: scale(1.005);
+  border: solid 1.5px #161616;
+  box-shadow: 3px -3px 10px 0px #b4b4b383;
 }
 
 .servicios {
@@ -176,6 +184,15 @@
 .cabDoble button:hover,
 .cabSuite button:hover {
   transform: scale(1.05);
+}
+.cabSimple .cabaña,
+.cabDoble .cabaña,
+.cabSuite .cabaña {
+  width: 25rem;
+  height: 25rem;
+  border: solid 2px #161616;
+  border-radius: 5px;
+  box-shadow: 3px -3px 10px 0px #b4b4b383;
 }
 
 footer {

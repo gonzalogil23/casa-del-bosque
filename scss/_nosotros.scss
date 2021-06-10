@@ -1,10 +1,18 @@
-.nosotros { 
-    font-family:  'Montserrat', sans-serif;
-    h2 { 
-        font-weight: bold;
+.nosotros {
+  font-family: 'Montserrat', sans-serif;
+  h2 {
+    font-weight: bold;
+  }
+  .imgCabaña {
+    width: 356px;
+    height: 425px;
+    transition: all 0.05s ease-out;
+    border: solid 1px rgb(22, 22, 22);
+    border-radius: 5px;
+    &:hover {
+      transform: scale(1.005);
+      border: solid 1.5px rgb(22, 22, 22);
+      box-shadow: 3px -3px 10px 0px #b4b4b383;
     }
-    .imgCabaña {
-        width: 356px;
-        height: 425px;
-    }
+  }
 }
