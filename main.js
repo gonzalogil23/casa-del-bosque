@@ -1,7 +1,5 @@
 moment().format();
 
-//alert("Cabaña SIMPLE x día $800 |" +  " Cabaña DOBLE x día $1300 |" + " Cabaña SUITE x día $2000")
-
 let CabSimple = 800;
 let CabDoble = 1300;
 let CabSuite = 2000;
@@ -17,7 +15,6 @@ let SuiteIVA = sumaPorDia(CabSuite, iva(CabSuite));
 const simple = new Cabaña(1, 3, SimpleIVA);
 const doble = new Cabaña(2, 5, DobleIVA);
 const suite = new Cabaña(3, 8, SuiteIVA);
-// console.table(simple);
 
 let estadia = function (a, b) {
   return a * b;
@@ -40,35 +37,65 @@ function Cabaña(habitaciones, cantidadPersonas, precio) {
   };
 }
 
-/*if (choice == "SIMPLE") {
-    simple.calcularEstadia();
-    console.table(simple);
-} 
-else if ( choice == "DOBLE") {
-    doble.calcularEstadia();
-    console.table(doble);
-} 
-else if (choice == "SUITE") {
-    suite.calcularEstadia();
-    console.table(suite);
-}*/
-
 class Servicio {
-  constructor(id, nombre, costo, tipo) {
+  constructor(id, nombre, costo, tipo, descripcion) {
     this.id = id;
     this.nombre = nombre;
     this.costo = costo;
     this.tipo = tipo;
+    this.descripcion = descripcion;
   }
 }
 
 const servicios = [];
-servicios.push(new Servicio(1, 'Cabalgata', 600, 'Recreacion'));
-servicios.push(new Servicio(2, 'Tirolesa', 800, 'Recreacion'));
-servicios.push(new Servicio(3, 'Trekking', 800, 'Recreacion'));
-servicios.push(new Servicio(4, 'Cena gourmet', 1200, 'Gastronomia'));
-servicios.push(new Servicio(5, 'Desayuno buffet', 700, 'Gastronomia'));
-servicios.push(new Servicio(6, 'Tarde de spa', 1000, 'Relax'));
+servicios.push(
+  new Servicio(
+    1,
+    'Cabalgata',
+    600,
+    'Recreacion',
+    'Tour a caballo guiado por el bosque.'
+  )
+);
+servicios.push(
+  new Servicio(
+    2,
+    'Tirolesa',
+    800,
+    'Recreacion',
+    'Deslizamiento por cable entre las copas de los arboles.'
+  )
+);
+servicios.push(
+  new Servicio(
+    3,
+    'Trekking',
+    800,
+    'Recreacion',
+    'Caminata guiada por el bosque.'
+  )
+);
+servicios.push(
+  new Servicio(
+    4,
+    'Cena gourmet',
+    1200,
+    'Gastronomia',
+    'Desgustación por pasos maridados con vino.'
+  )
+);
+servicios.push(
+  new Servicio(
+    5,
+    'Desayuno buffet',
+    700,
+    'Gastronomia',
+    'Manjares artesanales acompañados de jugos naturales.'
+  )
+);
+servicios.push(
+  new Servicio(6, 'Tarde de spa', 1000, 'Relax', 'Sesión de Spa y masajes.')
+);
 
 const actividadRecreativa = servicios.filter(
   (elemento) => elemento.tipo == 'recreacion'
@@ -77,10 +104,6 @@ const gastronomia = servicios.filter(
   (elemento) => elemento.tipo == 'gastronomia'
 );
 const relax = servicios.filter((elemento) => elemento.tipo == 'relax');
-
-console.log(actividadRecreativa);
-console.log(gastronomia);
-console.log(relax);
 
 /*let serv = document.getElementById("Servicios");
 for (const servicioAdicional of servicios) {
@@ -98,36 +121,46 @@ let cabanasimple = document.getElementById('simplePortada');
 let cabanadoble = document.getElementById('doblePortada');
 let cabanasuite = document.getElementById('suitePortada');
 
-// const fechaA = document.getElementById('checkIn');
-// const fechaB = document.getElementById('checkOut');
-// const fa = fechaA.value;
-// const fb = fechaB.value;
-
-// console.log(fa);
-// console.log(fb);
-// const checkIn = moment(fa);
-// const checkOut = moment(fb);
-// const estadiaTotal = checkOut.diff(checkIn, 'days');
+let fa, fb;
+const fechaA = document.getElementById('checkIn');
+fechaA.addEventListener('change', (event) => (fa = event.target.value));
+const fechaB = document.getElementById('checkOut');
+fechaB.addEventListener('change', (event) => (fb = event.target.value));
 
 let formRes = document.getElementById('formularioReserva');
+
 formRes.onsubmit = (evt) => {
   evt.preventDefault();
+  const checkIn = moment(fa, 'YYYY-MM-DD');
+  const checkOut = moment(fb, 'YYYY-MM-DD');
+  const estadiaTotal = checkOut.diff(checkIn, 'days');
   localStorage.setItem('pasajeros', pas.value);
-  localStorage.setItem('Check In', fechaA.value);
-  localStorage.setItem('Check Out', fechaB.value);
+  localStorage.setItem('Check In', fa);
+  localStorage.setItem('Check Out', fb);
+  localStorage.setItem('estadia', estadiaTotal);
 
   console.log('Cantidad de Pasajeros elegidos: ' + pas.value);
-  //console.log('Cantidad de días: ' + estadiaTotal);
+  console.log('Cantidad de días: ' + estadiaTotal);
   if (pas.value > 3) {
-    cabanasimple.style.visibility = 'hidden';
+    cabanasimple.style.display = 'initial';
+    cabanadoble.style.display = 'initial';
+    cabanasuite.style.display = 'initial';
   } else if (pas.value <= 3) {
-    cabanasimple.style.visibility = 'initial';
-    cabanadoble.style.visibility = 'initial';
+    cabanasimple.style.display = 'none';
+    cabanadoble.style.display = 'initial';
+    cabanasuite.style.display = 'initial';
   }
   if (pas.value > 6) {
-    cabanasimple.style.visibility = 'hidden';
-    cabanadoble.style.visibility = 'hidden';
+    cabanasimple.style.display = 'none';
+    cabanadoble.style.display = 'none';
+    cabanasuite.style.display = 'initial';
   }
+
+  $('.add').prepend(
+    `<hr>
+    <p> <strong>${estadiaTotal}</strong> días para <em>${pas.value} pasajeros</em></p>
+    <button type="submit" class="btn btn-outline-success" id="addBtn">Agregar.</button>`
+  );
 };
 
 const btnSimple = document.getElementById('btnSimple');
@@ -162,7 +195,10 @@ const trekking = document.getElementById('imgTrekking');
 const cocina = document.getElementById('imgCocina');
 const desayuno = document.getElementById('imgDesayuno');
 const spa = document.getElementById('imgSpa');
-
+// $('.contratar').on('click', function(event){
+//   event.preventDefault();
+//   $('#final').append(``)
+// })
 const formContacto = document.getElementById('formContacto');
 const nombreContacto = document.getElementById('fullName');
 const telefonoContacto = document.getElementById('phone');
@@ -174,7 +210,7 @@ formContacto.onsubmit = (evt) => {
   localStorage.setItem('Telefono', telefonoContacto.value);
   localStorage.setItem('Email', emailContacto.value);
   alert(
-    'Hola,' +
+    'Hola, ' +
       nombreContacto.value +
       '. Gracias por contactarte con nosotros. En breve nos comunicaremos para continuar con el proceso de Reserva.'
   );

@@ -112,19 +112,19 @@
                     <img src="img/simple.jpg" alt="frente cabaña simple" class="img-fluid imgCabaña">
                     <h2>Cabaña simple.</h2>
                     <p>Una habitación y galería con vista al Bosque.</p>
-                    <button class="btn btn-secondary" href="#simple" id="btnSimple"> Ver más</button>
+                    <button class="btn btn-secondary" href="#simple" id="btnSimple">Ver cabaña</button>
                 </div><!-- /.col-lg-4 -->
                 <div class="col-lg-4" id="doblePortada">
                     <img src="img/doble.jpg" alt="frente cabaña doble" class="img-fluid imgCabaña">
                     <h2>Cabaña doble.</h2>
                     <p>Dos habitaciones con balcón amplio.</p>
-                    <button class="btn btn-secondary" href="#doble" id="btnDoble"> Ver más</button>
+                    <button class="btn btn-secondary" href="#doble" id="btnDoble">Ver cabaña</button>
                 </div><!-- /.col-lg-4 -->
                 <div class="col-lg-4" id="suitePortada">
                     <img src="img/suite4.jpg" alt="frente cabaña suite" class="img-fluid imgCabaña">
                     <h2>Cabaña suite.</h2>
                     <p>Tres habitaciones y patio con yacuzzi.</p>
-                    <button class="btn btn-secondary " href="#suite" id="btnSuite"> Ver más</button>
+                    <button class="btn btn-secondary " href="#suite" id="btnSuite">Ver cabaña</button>
                 </div><!-- /.col-lg-4 -->
             </div>
             <hr>
@@ -137,10 +137,7 @@
                         <p class="lead">Cuenta con una habitación con una cama king, dos baños y una galería con salida
                             al bosque.</p>
                         <p>Valor por día: <strong>$800 + iva.</strong></p>
-                        <form>
-                            <input type="text" name="dias" placeholder="Cant. de días..." id="dias">
-                            <button type="submit" class="btn btn-outline-success" for='dias'>Agregar.</button>
-                        </form>
+                        <form class="add"></form>
                     </div>
                     <div class="col-md-5 order-md-1">
                         <img src="img/cabañasimple.jpg" alt="living cabaña simple" class="cabaña">
@@ -154,10 +151,7 @@
                         <p class="lead">Dividida en dos plantas. Cuenta con dos habitaciones, tres baños (dos en suite)
                             y una galeria amplia.</p>
                         <p>Valor por día: <strong>$1300 + iva.</strong></p>
-                        <form>
-                            <input type="text" name="dias" placeholder="Cant. de días..." id="dias">
-                            <button type="submit" class="btn btn-outline-success" for='dias'>Agregar.</button>
-                        </form>
+                        <form class="add"></form>
                     </div>
                     <div class="col-md-5 order-md-1">
                         <img src="img/doble1.jpg" alt="living cabaña doble" class="cabaña">
@@ -170,10 +164,7 @@
                         <p class="lead">Cuenta con tres habitaciones divididas en dos plantas, cada una con baño
                             suite. Tiene un balcón con yacuzzi, con salida al patio y vista al bosque</p>
                         <p>Valor por día: <strong>$2000 + iva.</strong></p>
-                        <form>
-                            <input type="text" name="dias" placeholder="Cant. de días..." id="dias">
-                            <button type="submit" class="btn btn-outline-success" for='dias'>Agregar.</button>
-                        </form>
+                        <form class="add"></form>
                     </div>
                     <div class="col-md-5 order-md-1">
                         <img src="img/suite2.jpg" alt="living cabaña suite" class="cabaña">
@@ -194,7 +185,7 @@
                             <h3 class="card-title">Cabalgata.</h3>
                             <h5 class="card-text">Tour a caballo guiado por el bosque.</h5>
                             <h6 class="card-text">Precio por persona: <strong>$600</strong></h6>
-                            <button type="submit" class="btn btn-outline-light">Contratar.</button>
+                            <button type="button" class="btn btn-outline-light contratar">Contratar.</button>
                         </div>
                     </div>
                     <div href="" class="col-md-4 col-sm-6 container-hf card text-white">
@@ -204,7 +195,7 @@
                             <h3 class="card-title">Tirolesa.</h3>
                             <h5 class="card-text">Deslizamiento por cable entre las copas de los arboles.</h5>
                             <h6 class="card-text">Precio por persona: <strong>$800</strong></h6>
-                            <button type="submit" class="btn btn-outline-light">Contratar.</button>
+                            <button type="button" class="btn btn-outline-light contratar">Contratar.</button>
                         </div>
                     </div>
                     <div href="" class="col-md-4 col-sm-6 container-hf card text-white">
@@ -214,7 +205,7 @@
                             <h3 class="card-title">Trekking.</h3>
                             <h5 class="card-text">Caminata guiada por el bosque.</h5>
                             <h6 class="card-text">Precio por persona: <strong>$800</strong></h6>
-                            <button type="submit" class="btn btn-outline-light">Contratar.</button>
+                            <button type="button" class="btn btn-outline-light contratar">Contratar.</button>
                         </div>
                     </div>
                     <div href="" class="col-md-4 col-sm-6 container-hf card text-white">
@@ -224,7 +215,7 @@
                             <h3 class="card-title">Cena gourmet.</h3>
                             <h5 class="card-text">Desgustación por pasos maridados con vino.</h5>
                             <h6 class="card-text">Precio por persona: <strong>$1200</strong></h6>
-                            <button type="submit" class="btn btn-outline-light">Contratar.</button>
+                            <button type="button" class="btn btn-outline-light contratar">Contratar.</button>
                         </div>
                     </div>
                     <div href="" class="col-md-4 col-sm-6 container-hf card text-white">
@@ -234,7 +225,7 @@
                             <h3 class="card-title">Desayuno Buffet.</h3>
                             <h5 class="card-text">Manjares artesanales acompañados de jugos naturales.</h5>
                             <h6 class="card-text">Precio por persona: <strong>$700</strong></h6>
-                            <button type="submit" class="btn btn-outline-light">Contratar.</button>
+                            <button type="button" class="btn btn-outline-light contratar">Contratar.</button>
                         </div>
                     </div>
                     <div href="" class="col-md-4 col-sm-6 container-hf card   text-white">
@@ -243,13 +234,13 @@
                             <h3 class="card-title">Tarde de Spa.</h3>
                             <h5 class="card-text">Sesión de Spa y masajes.</h5>
                             <h6 class="card-text">Precio por persona: <strong>$1000</strong></h6>
-                            <button type="submit" class="btn btn-outline-light">Contratar.</button>
+                            <button type="button" class="btn btn-outline-light contratar">Contratar.</button>
                         </div>
                     </div>
                 </div>
             </div>
-
         </section>
+        <section id="final"></section>
         <section id="Contacto" class="container contacto">
             <div>
                 <h2>¡Completa tus datos y nosotros te contactamos!</h2>
@@ -308,11 +299,10 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
         crossorigin="anonymous"></script>
+    <script src="jquery/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ"
         crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
         integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
