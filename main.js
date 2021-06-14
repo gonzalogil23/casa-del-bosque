@@ -162,7 +162,11 @@ formRes.onsubmit = (evt) => {
     <button type="submit" class="btn btn-outline-success" id="addBtn">Agregar.</button>`
   );
 };
-
+// const cantidadDias = parseInt(localStorage.getItem('estadia'));
+// console.log(cantidadDias);
+// $('#addBtn').on('click', function () {
+//   $('final').prepend(``);
+// });
 const btnSimple = document.getElementById('btnSimple');
 const btnDoble = document.getElementById('btnDoble');
 const btnSuite = document.getElementById('btnSuite');
@@ -195,10 +199,37 @@ const trekking = document.getElementById('imgTrekking');
 const cocina = document.getElementById('imgCocina');
 const desayuno = document.getElementById('imgDesayuno');
 const spa = document.getElementById('imgSpa');
-// $('.contratar').on('click', function(event){
-//   event.preventDefault();
-//   $('#final').append(``)
-// })
+
+$('.contratar1').on('click', function (event) {
+  event.preventDefault();
+  $('#final').prepend(`<h4>Servicio contratado: ${servicios[0].nombre}</h4>
+                      <h5>$ ${servicios[0].costo}`);
+});
+$('.contratar2').on('click', function (event) {
+  event.preventDefault();
+  $('#final').prepend(`<h4>Servicio contratado: ${servicios[1].nombre}</h4>
+                      <h5>$ ${servicios[1].costo}`);
+});
+$('.contratar3').on('click', function (event) {
+  event.preventDefault();
+  $('#final').prepend(`<h4>Servicio contratado: ${servicios[2].nombre}</h4>
+                      <h5>$ ${servicios[2].costo}`);
+});
+$('.contratar4').on('click', function (event) {
+  event.preventDefault();
+  $('#final').prepend(`<h4>Servicio contratado: ${servicios[3].nombre}</h4>
+                      <h5>$ ${servicios[3].costo}`);
+});
+$('.contratar5').on('click', function (event) {
+  event.preventDefault();
+  $('#final').prepend(`<h4>Servicio contratado: ${servicios[4].nombre}</h4>
+                      <h5>$ ${servicios[4].costo}`);
+});
+$('.contratar6').on('click', function (event) {
+  event.preventDefault();
+  $('#final').prepend(`<h4>Servicio contratado: ${servicios[5].nombre}</h4>
+                      <h5>$ ${servicios[5].costo}`);
+});
 const formContacto = document.getElementById('formContacto');
 const nombreContacto = document.getElementById('fullName');
 const telefonoContacto = document.getElementById('phone');
