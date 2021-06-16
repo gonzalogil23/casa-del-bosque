@@ -131,9 +131,11 @@ let formRes = document.getElementById('formularioReserva');
 
 formRes.onsubmit = (evt) => {
   evt.preventDefault();
+
   const checkIn = moment(fa, 'YYYY-MM-DD');
   const checkOut = moment(fb, 'YYYY-MM-DD');
   const estadiaTotal = checkOut.diff(checkIn, 'days');
+
   localStorage.setItem('pasajeros', pas.value);
   localStorage.setItem('Check In', fa);
   localStorage.setItem('Check Out', fb);
@@ -155,18 +157,23 @@ formRes.onsubmit = (evt) => {
     cabanadoble.style.display = 'none';
     cabanasuite.style.display = 'initial';
   }
-
-  $('.add').prepend(
-    `<hr>
-    <p> <strong>${estadiaTotal}</strong> días para <em>${pas.value} pasajeros</em></p>
-    <button type="submit" class="btn btn-outline-success" id="addBtn">Agregar.</button>`
-  );
 };
-// const cantidadDias = parseInt(localStorage.getItem('estadia'));
-// console.log(cantidadDias);
-// $('#addBtn').on('click', function () {
-//   $('final').prepend(``);
-// });
+const ingreso = localStorage.getItem('Check In');
+const egreso = localStorage.getItem('Check Out');
+const cantidadDias = parseInt(localStorage.getItem('estadia'));
+const guests = parseInt(localStorage.getItem('pasajeros'));
+
+$('.add').prepend(
+  `<hr>
+  <p> <strong>${cantidadDias}</strong> días para <em>${guests} pasajeros</em></p>
+  <button type="submit" class="btn btn-outline-success" id="addBtn">Agregar.</button>`
+);
+
+$('#ingreso').append(`${ingreso}`);
+$('#egreso').append(`${egreso}`);
+$('#guests').append(`${pas.value}`);
+$('#dias').append(`${cantidadDias}`);
+
 const btnSimple = document.getElementById('btnSimple');
 const btnDoble = document.getElementById('btnDoble');
 const btnSuite = document.getElementById('btnSuite');
@@ -175,19 +182,22 @@ const aparecerSimple = document.getElementById('simple');
 const aparecerDoble = document.getElementById('doble');
 const aparecerSuite = document.getElementById('suite');
 
-btnSimple.onfocus = () => {
+btnSimple.onclick = () => {
+  $('#simple').toggle(1000);
   aparecerSimple.style.display = 'flex';
   aparecerDoble.style.display = 'none';
   aparecerSuite.style.display = 'none';
 };
 
-btnDoble.onfocus = () => {
+btnDoble.onclick = () => {
+  $('#doble').toggle(1000);
   aparecerDoble.style.display = 'flex';
   aparecerSimple.style.display = 'none';
   aparecerSuite.style.display = 'none';
 };
 
-btnSuite.onfocus = () => {
+btnSuite.onclick = () => {
+  $('#suite').toggle(1000);
   aparecerSuite.style.display = 'flex';
   aparecerDoble.style.display = 'none';
   aparecerSimple.style.display = 'none';
@@ -202,33 +212,33 @@ const spa = document.getElementById('imgSpa');
 
 $('.contratar1').on('click', function (event) {
   event.preventDefault();
-  $('#final').prepend(`<h4>Servicio contratado: ${servicios[0].nombre}</h4>
-                      <h5>$ ${servicios[0].costo}`);
+  $('#serviciosfinales').append(`<p>${servicios[0].nombre}</p>
+                      <p>$ ${servicios[0].costo}</p>`);
 });
 $('.contratar2').on('click', function (event) {
   event.preventDefault();
-  $('#final').prepend(`<h4>Servicio contratado: ${servicios[1].nombre}</h4>
-                      <h5>$ ${servicios[1].costo}`);
+  $('#serviciosfinales').append(`<p>${servicios[1].nombre}</p>
+                      <p>$ ${servicios[1].costo}</p>`);
 });
 $('.contratar3').on('click', function (event) {
   event.preventDefault();
-  $('#final').prepend(`<h4>Servicio contratado: ${servicios[2].nombre}</h4>
-                      <h5>$ ${servicios[2].costo}`);
+  $('#serviciosfinales').append(`<p> ${servicios[2].nombre}</p>
+                      <p>$ ${servicios[2].costo}</p>`);
 });
 $('.contratar4').on('click', function (event) {
   event.preventDefault();
-  $('#final').prepend(`<h4>Servicio contratado: ${servicios[3].nombre}</h4>
-                      <h5>$ ${servicios[3].costo}`);
+  $('#serviciosfinales').append(`<p>${servicios[3].nombre}</p>
+                      <p>$ ${servicios[3].costo}</p>`);
 });
 $('.contratar5').on('click', function (event) {
   event.preventDefault();
-  $('#final').prepend(`<h4>Servicio contratado: ${servicios[4].nombre}</h4>
-                      <h5>$ ${servicios[4].costo}`);
+  $('#serviciosfinales').append(`<p>${servicios[4].nombre}</p>
+                      <p>$ ${servicios[4].costo}</p>`);
 });
 $('.contratar6').on('click', function (event) {
   event.preventDefault();
-  $('#final').prepend(`<h4>Servicio contratado: ${servicios[5].nombre}</h4>
-                      <h5>$ ${servicios[5].costo}`);
+  $('#serviciosfinales').append(`<p> ${servicios[5].nombre}</p>
+                      <p>$ ${servicios[5].costo}</p>`);
 });
 const formContacto = document.getElementById('formContacto');
 const nombreContacto = document.getElementById('fullName');

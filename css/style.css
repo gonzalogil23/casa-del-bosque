@@ -74,6 +74,13 @@
   border: solid 1.5px #161616;
   box-shadow: 3px -3px 10px 0px #b4b4b383;
 }
+.nosotros .btn-secondary {
+  transition: all 0.2s ease-out;
+}
+.nosotros .btn-secondary:hover {
+  background-color: #161616;
+  transform: scale(1.05);
+}
 
 .servicios {
   font-family: "Montserrat", sans-serif;
@@ -248,6 +255,34 @@ footer .redes {
 }
 footer .redes:hover {
   transform: scale(1.1);
+}
+
+.final {
+  border: solid 2px rgba(53, 53, 53, 0.705);
+  border-radius: 10px;
+  background-image: url(../img/forest-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 90vh;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  margin: 1.5rem auto;
+  padding: 2rem;
+  color: white;
+}
+.final p {
+  color: white;
+  font-size: 1rem;
+}
+.final .modal-body {
+  line-height: 3rem;
+}
+
+.btnfinal {
+  display: flex;
+  align-self: center;
+  margin: 2rem auto;
+  font-family: "Montserrat", sans-serif;
 }
 
 /*# sourceMappingURL=style.css.map */

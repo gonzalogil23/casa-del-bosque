@@ -15,4 +15,11 @@
       box-shadow: 3px -3px 10px 0px #b4b4b383;
     }
   }
+  .btn-secondary {
+    transition: all 0.2s ease-out;
+    &:hover {
+      background-color: rgb(22, 22, 22);
+      transform: scale(1.05);
+    }
+  }
 }
