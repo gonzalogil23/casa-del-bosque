@@ -1,6 +1,13 @@
 .navbar {
+  @media screen and (min-width: 1200px) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+  }
   .navbar-brand {
-    font-family: "Pacifico";
+    font-family: 'Pacifico';
     font-size: 22px;
     text-shadow: rgba(153, 153, 153, 0.637) 0 1px;
     transition: all 0.2s ease-out;

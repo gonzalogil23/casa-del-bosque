@@ -1,22 +1,22 @@
-.contacto { 
-    font-family: 'Montserrat', sans-serif;
-    margin-top: 30px;
-    display: flex;
-    h2 { 
-        font-family: 'Source Sans Pro', sans-serif;
-        text-align: center;
-        font-weight: bold;
-        font-size: 40px;
-        text-shadow: rgba(153, 153, 153, 0.637) 0 .5px;
+.contacto {
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 4rem;
+  display: flex;
+  h2 {
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    text-shadow: rgba(153, 153, 153, 0.637) 0 0.5px;
+  }
+  .formularioContacto {
+    width: 50%;
+    .form-label {
+      font-weight: 600;
     }
-    .formularioContacto{
-        width: 50%;
-        .form-label{
-            font-weight: 600;
-        }
-        textarea {
-            resize: none;
-            height: 150px;
+    textarea {
+      resize: none;
+      height: 150px;
     }
-}
+  }
 }
