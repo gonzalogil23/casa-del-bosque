@@ -255,7 +255,7 @@ $('.btnfinal').on('click', function () {
   servicios.forEach((service) => {
     if (service.cantidadDeReservas > 0) {
       $('#serviciosfinales').append(
-        `${service.nombre} x ${service.cantidadDeReservas} `
+        `${service.nombre} x ${service.costo} para ${service.cantidadDeReservas} <br> `
       );
     }
   });
@@ -283,6 +283,42 @@ lastForm.onsubmit = (event) => {
     icon: 'success'
   });
 };
+
+let HTMLCard = ""
+let HTMLError = ""
+let contenidoJSON = ""
+
+//AJAX
+
+function Testimonios(){
+   $.ajax({
+      url: 'https://randomuser.me/api/?results=4&nat=us,fr,br',
+      dataType: 'json',
+      success: function(data) {
+         contenidoJSON = data.results
+         for (let i in contenidoJSON) {
+            HTMLCard += `  <div class="card m-4">
+                                <img class="card-img-top img-testimonial" src="${contenidoJSON[i].picture.large}">
+                                <div class="card-body text-center">
+                                    <p class="card-text-testimonial">"Lorem ipsum dolor sit, amet consectetur adipisicing elit."</p>
+                                    <h5 class="card-title-testimonial">${contenidoJSON[i].name.first} ${contenidoJSON[i].name.last}</h5>
+                                    <h6 class="card-city-testimonial">${contenidoJSON[i].location.city}, ${contenidoJSON[i].location.country}</h6>
+                                </div>
+                            </div>`
+            $("#testimonios").html(HTMLCard)            
+         };
+      },
+      error: function() {
+         HTMLError = "<div class='center-text'>" +
+                     "<h4>El contenido parece no estar disponible. Intente nuevamente en unos minutos.</h4>" +
+                     "</div>"
+         $("#testimonial-item").html(HTMLError)
+      }
+   })
+};
+
+Testimonios();
+
 
 formContacto.onsubmit = (evt) => {
   evt.preventDefault();

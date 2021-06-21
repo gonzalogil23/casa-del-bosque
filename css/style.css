@@ -173,6 +173,16 @@
     opacity: 1;
   }
 }
+#testimoniosClientes {
+  font-family: "Montserrat", sans-serif;
+}
+#testimoniosClientes #clickTestimonios {
+  text-align: center;
+  font-weight: bold;
+  font-size: 40px;
+  text-shadow: rgba(153, 153, 153, 0.64) 0 0.5px;
+}
+
 .contacto {
   font-family: "Montserrat", sans-serif;
   margin-top: 4rem;
