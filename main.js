@@ -106,11 +106,15 @@ let cabanasimple = document.getElementById('simplePortada');
 let cabanadoble = document.getElementById('doblePortada');
 let cabanasuite = document.getElementById('suitePortada');
 
+let fa, fb;
+let estadiaTotal;
+let pax;
 pas.addEventListener('change', () => {
+  pax = pas.value;
   sessionStorage.setItem('pax', pas.value);
   localStorage.setItem('pasajeros', pas.value);
 });
-let fa, fb;
+
 const fechaA = document.getElementById('checkIn');
 fechaA.addEventListener('change', (event) => {
   fa = event.target.value;
@@ -123,23 +127,31 @@ fechaB.addEventListener('change', (event) => {
 });
 
 let formRes = document.getElementById('formularioReserva');
+let cabana1 = false;
+let cabana2 = false;
+let cabana3 = false;
 
 formRes.onsubmit = (evt) => {
   evt.preventDefault();
   const checkIn = moment(fa, 'YYYY-MM-DD');
   const checkOut = moment(fb, 'YYYY-MM-DD');
-  const estadiaTotal = checkOut.diff(checkIn, 'days');
+  estadiaTotal = checkOut.diff(checkIn, 'days');
 
   localStorage.setItem('Check In', fa);
   localStorage.setItem('Check Out', fb);
   sessionStorage.setItem('dias', estadiaTotal);
   localStorage.setItem('estadia', estadiaTotal);
 
+  $('#ingreso').append(`${fa}`);
+  $('#egreso').append(`${fb}`);
+  $('#guests').append(`${pax}`);
+  $('#dias').append(`${estadiaTotal}`);
+
   if (pas.value <= 3) {
     cabanasimple.style.display = 'initial';
     cabanadoble.style.display = 'initial';
     cabanasuite.style.display = 'initial';
-  } else if (pas.value > 3 || pas.value < 6) {
+  } else if (pas.value > 3 && pas.value < 6) {
     cabanasimple.style.display = 'none';
     cabanadoble.style.display = 'initial';
     cabanasuite.style.display = 'initial';
@@ -151,43 +163,42 @@ formRes.onsubmit = (evt) => {
   }
 };
 
-//VER PROBLEMA CON SESSION STORAGE!!
-const ingreso = sessionStorage.getItem('ingreso');
-const egreso = sessionStorage.getItem('egreso');
-const cantidadDias = parseInt(sessionStorage.getItem('dias'));
-const guests = parseInt(sessionStorage.getItem('pax'));
-
-function Cabaña(id, nombre, precio) {
+function Cabaña(id, nombre, precio, selected) {
   this.id = id;
   this.nombre = nombre;
   this.precio = precio;
+  this.selected = selected;
 }
 
 const cabins = [];
 
-cabins.push(new Cabaña(1, 'Cabaña simple', simpleIVA));
-cabins.push(new Cabaña(2, 'Cabaña doble', dobleIVA));
-cabins.push(new Cabaña(3, 'Cabaña suite', suiteIVA));
+cabins.push(new Cabaña(1, 'Cabaña simple', simpleIVA, false));
+cabins.push(new Cabaña(2, 'Cabaña doble', dobleIVA, false));
+cabins.push(new Cabaña(3, 'Cabaña suite', suiteIVA, false));
 
 $('.addBtn').on('click', function (e) {
   e.preventDefault();
   const cabanaId = e.target.getAttribute('data-cabaña-id');
   cabins.forEach((cabin) => {
     if (cabin.id.toString() === cabanaId) {
-      $('#quecabana').append(`${cabin.nombre}`);
+      if (!cabin.selected) {
+        $('#quecabana').append(`<h3>${cabin.nombre}</h3>`);
+        cabin.selected = true;
+        swal({
+          title: `Hecho!`,
+          text: `¡Cabaña reservada!`,
+          icon: 'success'
+        });
+      } else {
+        swal({
+          title: 'Ya elegiste esta cabaña',
+          icon: 'warning'
+        });
+      }
     }
   });
-  swal({
-    title: `Hecho!`,
-    text: `¡Cabaña reservada!`,
-    icon: 'success'
-  });
-}); //VER ESTOOOOOOOOOOOOOOOO
-
-$('#ingreso').append(`${ingreso}`);
-$('#egreso').append(`${egreso}`);
-$('#guests').append(`${guests}`);
-$('#dias').append(`${cantidadDias}`);
+});
+//VER ESTOOOOOOOOOOOOOOOO
 
 const btnSimple = document.getElementById('btnSimple');
 const btnDoble = document.getElementById('btnDoble');
@@ -202,10 +213,12 @@ btnSimple.onclick = () => {
   aparecerSimple.style.display = 'flex';
   aparecerDoble.style.display = 'none';
   aparecerSuite.style.display = 'none';
-  $('.add').prepend(
-    `<hr>
-    <p> <strong>${cantidadDias}</strong> días para <em>${guests} pasajeros</em></p>`
-  );
+  if (estadiaTotal !== undefined && pax !== undefined) {
+    $('.add').prepend(
+      `<hr>
+    <p> <strong>${estadiaTotal}</strong> días para <em>${pax} pasajeros</em></p>`
+    );
+  }
 };
 
 btnDoble.onclick = () => {
@@ -213,10 +226,12 @@ btnDoble.onclick = () => {
   aparecerDoble.style.display = 'flex';
   aparecerSimple.style.display = 'none';
   aparecerSuite.style.display = 'none';
-  $('.add').prepend(
-    `<hr>
-    <p> <strong>${cantidadDias}</strong> días para <em>${guests} pasajeros</em></p>`
-  );
+  if (estadiaTotal !== undefined && pax !== undefined) {
+    $('.add').prepend(
+      `<hr>
+    <p> <strong>${estadiaTotal}</strong> días para <em>${pax} pasajeros</em></p>`
+    );
+  }
 };
 
 btnSuite.onclick = () => {
@@ -224,10 +239,12 @@ btnSuite.onclick = () => {
   aparecerSuite.style.display = 'flex';
   aparecerDoble.style.display = 'none';
   aparecerSimple.style.display = 'none';
-  $('.add').prepend(
-    `<hr>
-    <p> <strong>${cantidadDias}</strong> días para <em>${guests} pasajeros</em></p>`
-  );
+  if (estadiaTotal !== undefined && pax !== undefined) {
+    $('.add').prepend(
+      `<hr>
+    <p> <strong>${estadiaTotal}</strong> días para <em>${pax} pasajeros</em></p>`
+    );
+  }
 };
 
 const cabalgata = document.getElementById('imgCabalgata');
@@ -246,7 +263,7 @@ $('.services').on('click', function (event) {
     }
   });
   swal({
-    title: 'Servicio agregado!',
+    title: '¡Servicio agregado!',
     icon: 'success'
   });
 });
@@ -267,11 +284,19 @@ const emailContacto = document.getElementById('email');
 
 $('#showForm').on('click', function (event) {
   event.preventDefault();
-  $('#reservaFinal').fadeIn('slow');
   $('#staticBackdrop').fadeOut();
-  swal({
-    title: 'Agrega tus datos y finaliza la reserva.'
-  });
+  if ((pax, fa, fb !== undefined)) {
+    $('#reservaFinal').fadeIn('3000');
+    swal({
+      title: '¡Perfecto!',
+      text: 'Agrega tus datos y finaliza la reserva.'
+    });
+  } else {
+    swal({
+      title: 'Elige la fecha y cantidad de pasajeros para continuar',
+      icon: 'error'
+    });
+  }
 });
 
 const lastForm = document.getElementById('ready');
@@ -279,46 +304,54 @@ lastForm.onsubmit = (event) => {
   event.preventDefault();
   swal({
     title: '¡Tu reserva fue hecha con éxito!',
-    text: 'Gracias por elegirnos',
+    text: 'Gracias por elegirnos.',
     icon: 'success'
   });
 };
 
-let HTMLCard = ""
-let HTMLError = ""
-let contenidoJSON = ""
+let HTMLCard = '';
+let HTMLError = '';
+let contenidoJSON = '';
 
 //AJAX
 
-function Testimonios(){
-   $.ajax({
-      url: 'https://randomuser.me/api/?results=4&nat=us,fr,br',
-      dataType: 'json',
-      success: function(data) {
-         contenidoJSON = data.results
-         for (let i in contenidoJSON) {
-            HTMLCard += `  <div class="card m-4">
+function Testimonios() {
+  $.ajax({
+    url: 'https://randomuser.me/api/?results=4&nat=us,fr,br',
+    dataType: 'json',
+    success: function (data) {
+      contenidoJSON = data.results;
+      for (let i in contenidoJSON) {
+        HTMLCard += `  <div class="card m-4">
                                 <img class="card-img-top img-testimonial" src="${contenidoJSON[i].picture.large}">
                                 <div class="card-body text-center">
                                     <p class="card-text-testimonial">"Lorem ipsum dolor sit, amet consectetur adipisicing elit."</p>
                                     <h5 class="card-title-testimonial">${contenidoJSON[i].name.first} ${contenidoJSON[i].name.last}</h5>
                                     <h6 class="card-city-testimonial">${contenidoJSON[i].location.city}, ${contenidoJSON[i].location.country}</h6>
                                 </div>
-                            </div>`
-            $("#testimonios").html(HTMLCard)            
-         };
-      },
-      error: function() {
-         HTMLError = "<div class='center-text'>" +
-                     "<h4>El contenido parece no estar disponible. Intente nuevamente en unos minutos.</h4>" +
-                     "</div>"
-         $("#testimonial-item").html(HTMLError)
+                            </div>`;
+        $('#testimonios').html(HTMLCard);
       }
-   })
-};
-
+    },
+    error: function () {
+      HTMLError =
+        "<div class='center-text'>" +
+        '<h4>El contenido parece no estar disponible. Intente nuevamente en unos minutos.</h4>' +
+        '</div>';
+      $('#testimonial-item').html(HTMLError);
+    }
+  });
+}
 Testimonios();
+$('document').ready(function () {
+  testFadeIn.hide();
+});
+const testimoniosClientes = $('#testimoniosClientes');
+const testFadeIn = $('#testimonios');
 
+testimoniosClientes.mouseover(function () {
+  testFadeIn.fadeIn(3000);
+});
 
 formContacto.onsubmit = (evt) => {
   evt.preventDefault();
@@ -326,7 +359,7 @@ formContacto.onsubmit = (evt) => {
   localStorage.setItem('Telefono', telefonoContacto.value);
   localStorage.setItem('Email', emailContacto.value);
   swal({
-    title: `¡Hola!  ${nombreContacto.value}`,
-    text: 'Gracias por contactarte con nosotros. En breve nos comunicaremos para continuar con el proceso de Reserva.'
+    title: `Gracias por contactarte con nosotros.`,
+    text: 'En breve nos comunicaremos para despejar tus dudas y continuar con el proceso de Reserva.'
   });
 };

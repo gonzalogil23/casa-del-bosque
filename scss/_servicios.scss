@@ -57,9 +57,10 @@
   }
 }
 
-#testimoniosClientes{
+#testimoniosClientes {
   font-family: 'Montserrat', sans-serif;
-  #clickTestimonios{
+  display: none;
+  #clickTestimonios {
     text-align: center;
     font-weight: bold;
     font-size: 40px;
