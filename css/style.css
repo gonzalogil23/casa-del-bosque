@@ -41,9 +41,11 @@
 }
 .inicio .textoInicio .display-5 {
   font-size: 3.5rem;
+  text-shadow: 2px -1px 2px black;
 }
 .inicio .textoInicio .lead {
   font-size: 1.5rem;
+  text-shadow: 1px 0px 1px black;
 }
 .inicio .textoInicio .btn:hover {
   background-color: #161616;
@@ -175,6 +177,7 @@
 }
 #testimoniosClientes {
   font-family: "Montserrat", sans-serif;
+  display: none;
 }
 #testimoniosClientes #clickTestimonios {
   text-align: center;

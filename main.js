@@ -13,17 +13,26 @@ let dobleIVA = sumaPorDia(CabDoble, iva(CabDoble));
 let suiteIVA = sumaPorDia(CabSuite, iva(CabSuite));
 
 let estadia = function (a, b) {
-  return a * b;
+  return a + b;
 };
 
 class Servicio {
-  constructor(id, nombre, costo, tipo, descripcion, cantidadDeReservas) {
+  constructor(
+    id,
+    nombre,
+    costo,
+    tipo,
+    descripcion,
+    selected,
+    cantidadPersonas
+  ) {
     this.id = id;
     this.nombre = nombre;
     this.costo = costo;
     this.tipo = tipo;
     this.descripcion = descripcion;
-    this.cantidadDeReservas = cantidadDeReservas;
+    this.selected = selected;
+    this.cantidadPersonas = cantidadPersonas;
   }
 }
 
@@ -35,6 +44,7 @@ servicios.push(
     600,
     'Recreacion',
     'Tour a caballo guiado por el bosque.',
+    false,
     0
   )
 );
@@ -45,6 +55,7 @@ servicios.push(
     800,
     'Recreacion',
     'Deslizamiento por cable entre las copas de los arboles.',
+    false,
     0
   )
 );
@@ -55,6 +66,7 @@ servicios.push(
     800,
     'Recreacion',
     'Caminata guiada por el bosque.',
+    false,
     0
   )
 );
@@ -65,6 +77,7 @@ servicios.push(
     1200,
     'Gastronomia',
     'Desgustación por pasos maridados con vino.',
+    false,
     0
   )
 );
@@ -75,31 +88,21 @@ servicios.push(
     700,
     'Gastronomia',
     'Manjares artesanales acompañados de jugos naturales.',
+    false,
     0
   )
 );
 servicios.push(
-  new Servicio(6, 'Tarde de spa', 1000, 'Relax', 'Sesión de Spa y masajes.', 0)
+  new Servicio(
+    6,
+    'Tarde de spa',
+    1000,
+    'Relax',
+    'Sesión de Spa y masajes.',
+    false,
+    0
+  )
 );
-
-const actividadRecreativa = servicios.filter(
-  (elemento) => elemento.tipo == 'recreacion'
-);
-const gastronomia = servicios.filter(
-  (elemento) => elemento.tipo == 'gastronomia'
-);
-const relax = servicios.filter((elemento) => elemento.tipo == 'relax');
-
-/*let serv = document.getElementById("Servicios");
-for (const servicioAdicional of servicios) {
-    let contenedor = document.createElement("div");
-    contenedor.innerHTML= `<h3> Producto: <em> ${servicioAdicional.nombre}</em></h3>
-                           <p>  Tipo: ${servicioAdicional.tipo} </p>
-                           <strong> $ ${servicioAdicional.costo}</strong>`;
-                    
-    serv.appendChild(contenedor);
-}
-console.log(serv);*/
 
 let pas = document.getElementById('pasajeros');
 let cabanasimple = document.getElementById('simplePortada');
@@ -127,9 +130,6 @@ fechaB.addEventListener('change', (event) => {
 });
 
 let formRes = document.getElementById('formularioReserva');
-let cabana1 = false;
-let cabana2 = false;
-let cabana3 = false;
 
 formRes.onsubmit = (evt) => {
   evt.preventDefault();
@@ -151,7 +151,7 @@ formRes.onsubmit = (evt) => {
     cabanasimple.style.display = 'initial';
     cabanadoble.style.display = 'initial';
     cabanasuite.style.display = 'initial';
-  } else if (pas.value > 3 && pas.value < 6) {
+  } else if (pas.value >= 3 && pas.value <= 6) {
     cabanasimple.style.display = 'none';
     cabanadoble.style.display = 'initial';
     cabanasuite.style.display = 'initial';
@@ -176,6 +176,7 @@ cabins.push(new Cabaña(1, 'Cabaña simple', simpleIVA, false));
 cabins.push(new Cabaña(2, 'Cabaña doble', dobleIVA, false));
 cabins.push(new Cabaña(3, 'Cabaña suite', suiteIVA, false));
 
+let cabElegida;
 $('.addBtn').on('click', function (e) {
   e.preventDefault();
   const cabanaId = e.target.getAttribute('data-cabaña-id');
@@ -184,6 +185,7 @@ $('.addBtn').on('click', function (e) {
       if (!cabin.selected) {
         $('#quecabana').append(`<h3>${cabin.nombre}</h3>`);
         cabin.selected = true;
+        cabElegida = cabin.precio;
         swal({
           title: `Hecho!`,
           text: `¡Cabaña reservada!`,
@@ -198,7 +200,6 @@ $('.addBtn').on('click', function (e) {
     }
   });
 });
-//VER ESTOOOOOOOOOOOOOOOO
 
 const btnSimple = document.getElementById('btnSimple');
 const btnDoble = document.getElementById('btnDoble');
@@ -213,12 +214,6 @@ btnSimple.onclick = () => {
   aparecerSimple.style.display = 'flex';
   aparecerDoble.style.display = 'none';
   aparecerSuite.style.display = 'none';
-  if (estadiaTotal !== undefined && pax !== undefined) {
-    $('.add').prepend(
-      `<hr>
-    <p> <strong>${estadiaTotal}</strong> días para <em>${pax} pasajeros</em></p>`
-    );
-  }
 };
 
 btnDoble.onclick = () => {
@@ -226,12 +221,6 @@ btnDoble.onclick = () => {
   aparecerDoble.style.display = 'flex';
   aparecerSimple.style.display = 'none';
   aparecerSuite.style.display = 'none';
-  if (estadiaTotal !== undefined && pax !== undefined) {
-    $('.add').prepend(
-      `<hr>
-    <p> <strong>${estadiaTotal}</strong> días para <em>${pax} pasajeros</em></p>`
-    );
-  }
 };
 
 btnSuite.onclick = () => {
@@ -239,12 +228,6 @@ btnSuite.onclick = () => {
   aparecerSuite.style.display = 'flex';
   aparecerDoble.style.display = 'none';
   aparecerSimple.style.display = 'none';
-  if (estadiaTotal !== undefined && pax !== undefined) {
-    $('.add').prepend(
-      `<hr>
-    <p> <strong>${estadiaTotal}</strong> días para <em>${pax} pasajeros</em></p>`
-    );
-  }
 };
 
 const cabalgata = document.getElementById('imgCabalgata');
@@ -259,24 +242,30 @@ $('.services').on('click', function (event) {
   const serviceId = event.target.getAttribute('data-service-id');
   servicios.forEach((service) => {
     if (service.id.toString() === serviceId) {
-      service.cantidadDeReservas = service.cantidadDeReservas + 1;
+      if (!service.selected) {
+        swal('Cantidad de personas: ', {
+          content: 'input'
+        }).then((value) => {
+          swal(`Servicio agregado para ${value} personas`);
+          service.cantidadPersonas = value;
+          $('#serviciosfinales').append(
+            `<p>${service.nombre} para ${value} personas = $${
+              service.costo * value
+            } </p>`
+          );
+        });
+        service.selected = true;
+      } else {
+        swal({
+          title: 'Ya contrataste este servicio',
+          text: '¡Conoce los otros que tenemos!',
+          icon: 'warning'
+        });
+      }
     }
-  });
-  swal({
-    title: '¡Servicio agregado!',
-    icon: 'success'
   });
 });
 
-$('.btnfinal').on('click', function () {
-  servicios.forEach((service) => {
-    if (service.cantidadDeReservas > 0) {
-      $('#serviciosfinales').append(
-        `${service.nombre} x ${service.costo} para ${service.cantidadDeReservas} <br> `
-      );
-    }
-  });
-});
 const formContacto = document.getElementById('formContacto');
 const nombreContacto = document.getElementById('fullName');
 const telefonoContacto = document.getElementById('phone');
@@ -297,6 +286,24 @@ $('#showForm').on('click', function (event) {
       icon: 'error'
     });
   }
+});
+
+const precio = (a, b) => {
+  return a * b;
+};
+let cabFinal;
+let costoService;
+$('.btnfinal').on('click', () => {
+  costoService = 0;
+  servicios.forEach((service) => {
+    if (service.selected && service.cantidadPersonas > 0) {
+      costoService += precio(service.costo, service.cantidadPersonas);
+    }
+  });
+  cabFinal = precio(cabElegida, estadiaTotal);
+  let costoTotal = estadia(cabFinal, costoService);
+  $('#costoTotal').html('');
+  $('#costoTotal').append(`Precio final: <strong>${costoTotal}</strong>`);
 });
 
 const lastForm = document.getElementById('ready');
@@ -322,11 +329,11 @@ function Testimonios() {
     success: function (data) {
       contenidoJSON = data.results;
       for (let i in contenidoJSON) {
-        HTMLCard += `  <div class="card m-4">
+        HTMLCard += `  <div class="card m-4 rounded-3">
                                 <img class="card-img-top img-testimonial" src="${contenidoJSON[i].picture.large}">
                                 <div class="card-body text-center">
                                     <p class="card-text-testimonial">"Lorem ipsum dolor sit, amet consectetur adipisicing elit."</p>
-                                    <h5 class="card-title-testimonial">${contenidoJSON[i].name.first} ${contenidoJSON[i].name.last}</h5>
+                                    <h5 class="card-title-testimonial fw-bolder">${contenidoJSON[i].name.first} ${contenidoJSON[i].name.last}</h5>
                                     <h6 class="card-city-testimonial">${contenidoJSON[i].location.city}, ${contenidoJSON[i].location.country}</h6>
                                 </div>
                             </div>`;
