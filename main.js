@@ -306,7 +306,7 @@ $('.btnfinal').on('click', () => {
   $('#costoTotal').append(`Precio final: <strong>${costoTotal}</strong>`);
 });
 
-const lastForm = document.getElementById('ready');
+const lastForm = document.getElementById('reservaFinal');
 lastForm.onsubmit = (event) => {
   event.preventDefault();
   swal({

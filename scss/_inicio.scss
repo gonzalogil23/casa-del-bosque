@@ -7,6 +7,9 @@
     text-align: left;
     padding: 30px;
     margin-left: 30px;
+    @media screen and (max-width: 1000px) {
+      margin-left: unset;
+    }
     .display-5 {
       font-size: 3.5rem;
       text-shadow: 2px -1px 2px black;

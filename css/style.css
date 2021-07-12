@@ -39,6 +39,11 @@
   padding: 30px;
   margin-left: 30px;
 }
+@media screen and (max-width: 1000px) {
+  .inicio .textoInicio {
+    margin-left: unset;
+  }
+}
 .inicio .textoInicio .display-5 {
   font-size: 3.5rem;
   text-shadow: 2px -1px 2px black;
@@ -94,6 +99,12 @@
 }
 .nosotros h2 {
   font-weight: bold;
+}
+.nosotros h6 {
+  font-weight: 600;
+}
+.nosotros p {
+  font-size: 0.9em;
 }
 .nosotros .imgCabaña {
   width: 356px;
