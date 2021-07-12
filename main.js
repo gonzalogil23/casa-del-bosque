@@ -155,11 +155,14 @@ formRes.onsubmit = (evt) => {
     cabanasimple.style.display = 'none';
     cabanadoble.style.display = 'initial';
     cabanasuite.style.display = 'initial';
+    aparecerSimple.style.display = 'none';
   }
   if (pas.value > 6) {
     cabanasimple.style.display = 'none';
     cabanadoble.style.display = 'none';
     cabanasuite.style.display = 'initial';
+    aparecerDoble.style.display = 'none';
+    aparecerSimple.style.display = 'none';
   }
 };
 
